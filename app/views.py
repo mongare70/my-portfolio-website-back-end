@@ -24,7 +24,8 @@ def sendEmail():
     From: {request_data["name"]} : {request_data["email"]}
     
     """
-
-    mail.send(msg)
-
-    return jsonify({"sent": True})
+    try:
+        mail.send(msg)
+        return jsonify({"sent": True})
+    except:
+        return jsonify({"sent": False})
